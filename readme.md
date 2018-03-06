@@ -8,7 +8,7 @@ Convenient Sublime Text commands for running your PHPUnit tests. Scans up the di
 Installation is as simple as cloning the repository into your Sublime Text install's `Packages` folder:
 
 ```bash
-git clone https://github.com/adamwathan/sublime-phpunit /Library/Application\ Support/Sublime\ Text\ 3/Packages/sublime-phpunit
+git clone https://github.com/adamwathan/sublime-phpunit ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/sublime-phpunit
 ```
 
 ## Available Commands & Example Keybindings
@@ -47,3 +47,15 @@ By default, this package uses macOS's built-in Terminal.app. If you want to use 
     "phpunit-sublime-terminal": "iTerm",
 }
 ```
+
+## Using fish shell
+
+If you use [fish shell](https://fishshell.com/), specify this in your settings: 
+
+```
+{
+    "php-sublime-shell": "fish"
+}
+``` 
+
+This will instruct Sublime PHPUnit to connect the commands using fish's `; and` instead of bash's `&&`.
