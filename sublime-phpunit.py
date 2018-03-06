@@ -148,6 +148,23 @@ class RunDuskTestsInDirCommand(PhpunitTestCommand):
 
         self.run_in_terminal('cd ' + phpunit_config_path + self.get_cmd_connector() + 'php artisan dusk ' + directory)
 
+class RunTestsInDocker(PhpunitTestCommand):
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, active_view, directory = self.get_paths()
+        self.run_in_terminal('cd' + phpunit_config_path + self.get_cmd_connector() + './develop t ' + file_name)
+
+class RunSingleTestInDocker(PhpunitTestCommand):
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, active_view, directory = self.get_paths()
+
+        current_function = self.get_current_function(active_view)
+
+        self.run_in_terminal('cd' + phpunit_config_path + self.get_cmd_connector() + './develop t --filter="' + current_function +'"')
+
+class RunAllTestsInDocker(PhpunitTestCommand):
+    def run(self, *args, **kwargs):
+        file_name, phpunit_config_path, active_view, directory = self.get_paths()
+        self.run_in_terminal('cd' + phpunit_config_path + self.get_cmd_connector() + './develop t')
 
 class FindMatchingTestCommand(sublime_plugin.WindowCommand):
 
